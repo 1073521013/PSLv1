@@ -1,6 +1,8 @@
 from __future__ import division
 import numpy as np
 import pandas as pd
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from time import time
 import itertools
@@ -75,5 +77,5 @@ for i, j in itertools.product(range(cf_val.shape[0]), range(cf_val.shape[1])):
 plt.tight_layout()
 plt.ylabel('True location')
 plt.xlabel('Predicted location');
-# -*- coding: utf-8 -*-
+plt.savefig('svm.png')
 
