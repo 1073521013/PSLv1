@@ -1,0 +1,141 @@
+[ 2017-10-05 15:16:30,584][train_cascade.<module>] tools.train_cascade
+[ 2017-10-05 15:16:30,584][train_cascade.<module>] 
+{
+    "cascade":{
+        "data_save_dir":"/home/guest_majian/python/gcForest_official/gcforest/mnist/fg-tree300-depth0-3folds/cascade/data",
+        "early_stopping_rounds":8,
+        "estimators":[
+            {
+                "max_depth":null,
+                "max_features":1,
+                "n_estimators":500,
+                "n_folds":5,
+                "n_jobs":-1,
+                "type":"ExtraTreesClassifier"
+            },
+            {
+                "max_depth":null,
+                "max_features":1,
+                "n_estimators":500,
+                "n_folds":5,
+                "n_jobs":-1,
+                "type":"ExtraTreesClassifier"
+            },
+            {
+                "max_depth":null,
+                "max_features":1,
+                "n_estimators":500,
+                "n_folds":5,
+                "n_jobs":-1,
+                "type":"ExtraTreesClassifier"
+            },
+            {
+                "max_depth":null,
+                "max_features":1,
+                "n_estimators":500,
+                "n_folds":5,
+                "n_jobs":-1,
+                "type":"ExtraTreesClassifier"
+            },
+            {
+                "max_depth":null,
+                "n_estimators":500,
+                "n_folds":5,
+                "n_jobs":-1,
+                "type":"RandomForestClassifier"
+            },
+            {
+                "max_depth":null,
+                "n_estimators":500,
+                "n_folds":5,
+                "n_jobs":-1,
+                "type":"RandomForestClassifier"
+            },
+            {
+                "max_depth":null,
+                "n_estimators":500,
+                "n_folds":5,
+                "n_jobs":-1,
+                "type":"RandomForestClassifier"
+            },
+            {
+                "max_depth":null,
+                "n_estimators":500,
+                "n_folds":5,
+                "n_jobs":-1,
+                "type":"RandomForestClassifier"
+            }
+        ],
+        "look_indexs_cycle":[
+            [
+                0,
+                1
+            ],
+            [
+                2,
+                3
+            ],
+            [
+                4,
+                5
+            ]
+        ],
+        "max_layers":100,
+        "n_classes":10,
+        "random_state":0
+    },
+    "dataset":{
+        "test":{
+            "X_keys":[
+                "pool1/7x7/ets",
+                "pool1/7x7/rf",
+                "pool1/10x10/ets",
+                "pool1/10x10/rf",
+                "pool1/13x13/ets",
+                "pool1/13x13/rf"
+            ],
+            "data_path":"/home/guest_majian/python/gcForest_official/gcforest/mnist/fg-tree500-depth100-3folds/datas/test/outputs.pkl",
+            "type":"ds_pickle2"
+        },
+        "train":{
+            "X_keys":[
+                "pool1/7x7/ets",
+                "pool1/7x7/rf",
+                "pool1/10x10/ets",
+                "pool1/10x10/rf",
+                "pool1/13x13/ets",
+                "pool1/13x13/rf"
+            ],
+            "data_path":"/home/guest_majian/python/gcForest_official/gcforest/mnist/fg-tree500-depth100-3folds/datas/train/outputs.pkl",
+            "type":"ds_pickle2"
+        }
+    }
+}
+[ 2017-10-05 15:16:30,587][cascade_classifier.fit_transform] X_groups_train.shape=[(11231, 10, 1, 1), (11231, 10, 1, 1), (11231, 10, 1, 1), (11231, 10, 1, 1), (11231, 10, 1, 1), (11231, 10, 1, 1)],y_train.shape=(11231,),X__groups_test.shape=[(2773, 10, 1, 1), (2773, 10, 1, 1), (2773, 10, 1, 1), (2773, 10, 1, 1), (2773, 10, 1, 1), (2773, 10, 1, 1)],y_test.shape=(2773,)
+[ 2017-10-05 15:16:30,591][cascade_classifier.fit_transform] group_dims=[10, 10, 10, 10, 10, 10]
+[ 2017-10-05 15:16:30,592][cascade_classifier.fit_transform] X_train.shape=(11231, 60),X_test.shape=(2773, 60)
+[ 2017-10-05 15:16:30,593][cascade_classifier.fit_transform] [layer=0] look_indexs=[0, 1], X_cur_train.shape=(11231, 20), X_cur_test.shape=(2773, 20)
+[ 2017-10-05 15:16:32,987][kfold_wrapper.log_eval_metrics] Accuracy(layer_0 - estimator_0 - 5_folds.train_0.predict)=61.41%
+[ 2017-10-05 15:16:35,639][kfold_wrapper.log_eval_metrics] Accuracy(layer_0 - estimator_0 - 5_folds.train_1.predict)=60.99%
+[ 2017-10-05 15:16:38,274][kfold_wrapper.log_eval_metrics] Accuracy(layer_0 - estimator_0 - 5_folds.train_2.predict)=61.40%
+[ 2017-10-05 15:16:40,905][kfold_wrapper.log_eval_metrics] Accuracy(layer_0 - estimator_0 - 5_folds.train_3.predict)=61.56%
+[ 2017-10-05 15:16:43,417][kfold_wrapper.log_eval_metrics] Accuracy(layer_0 - estimator_0 - 5_folds.train_4.predict)=59.43%
+[ 2017-10-05 15:16:43,775][kfold_wrapper.log_eval_metrics] Accuracy(layer_0 - estimator_0 - 5_folds.train.predict)=60.96%
+[ 2017-10-05 15:16:43,775][kfold_wrapper.log_eval_metrics] Accuracy(layer_0 - estimator_0 - 5_folds.test.predict)=54.45%
+[ 2017-10-05 15:16:46,097][kfold_wrapper.log_eval_metrics] Accuracy(layer_0 - estimator_1 - 5_folds.train_0.predict)=59.18%
+[ 2017-10-05 15:16:48,739][kfold_wrapper.log_eval_metrics] Accuracy(layer_0 - estimator_1 - 5_folds.train_1.predict)=60.90%
+[ 2017-10-05 15:16:51,278][kfold_wrapper.log_eval_metrics] Accuracy(layer_0 - estimator_1 - 5_folds.train_2.predict)=63.13%
+[ 2017-10-05 15:16:53,909][kfold_wrapper.log_eval_metrics] Accuracy(layer_0 - estimator_1 - 5_folds.train_3.predict)=60.40%
+[ 2017-10-05 15:16:56,433][kfold_wrapper.log_eval_metrics] Accuracy(layer_0 - estimator_1 - 5_folds.train_4.predict)=60.99%
+[ 2017-10-05 15:16:56,763][kfold_wrapper.log_eval_metrics] Accuracy(layer_0 - estimator_1 - 5_folds.train.predict)=60.92%
+[ 2017-10-05 15:16:56,763][kfold_wrapper.log_eval_metrics] Accuracy(layer_0 - estimator_1 - 5_folds.test.predict)=54.09%
+[ 2017-10-05 15:16:59,065][kfold_wrapper.log_eval_metrics] Accuracy(layer_0 - estimator_2 - 5_folds.train_0.predict)=62.61%
+[ 2017-10-05 15:17:01,680][kfold_wrapper.log_eval_metrics] Accuracy(layer_0 - estimator_2 - 5_folds.train_1.predict)=61.08%
+[ 2017-10-05 15:17:04,315][kfold_wrapper.log_eval_metrics] Accuracy(layer_0 - estimator_2 - 5_folds.train_2.predict)=60.42%
+[ 2017-10-05 15:17:06,940][kfold_wrapper.log_eval_metrics] Accuracy(layer_0 - estimator_2 - 5_folds.train_3.predict)=60.40%
+[ 2017-10-05 15:17:09,577][kfold_wrapper.log_eval_metrics] Accuracy(layer_0 - estimator_2 - 5_folds.train_4.predict)=59.52%
+[ 2017-10-05 15:17:09,914][kfold_wrapper.log_eval_metrics] Accuracy(layer_0 - estimator_2 - 5_folds.train.predict)=60.80%
+[ 2017-10-05 15:17:09,914][kfold_wrapper.log_eval_metrics] Accuracy(layer_0 - estimator_2 - 5_folds.test.predict)=54.06%
+[ 2017-10-05 15:17:12,243][kfold_wrapper.log_eval_metrics] Accuracy(layer_0 - estimator_3 - 5_folds.train_0.predict)=60.56%
+[ 2017-10-05 15:17:14,897][kfold_wrapper.log_eval_metrics] Accuracy(layer_0 - estimator_3 - 5_folds.train_1.predict)=62.19%
+[ 2017-10-05 15:17:17,531][kfold_wrapper.log_eval_metrics] Accuracy(layer_0 - estimator_3 - 5_folds.train_2.predict)=59.93%

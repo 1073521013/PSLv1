@@ -6,18 +6,9 @@ Requirements: This package is developed with Python 2.7, please make sure all th
 ATTN: This package is free for academic usage. You can run it at your own risk. For other purposes, please contact Prof. Zhi-Hua Zhou(zhouzh@lamda.nju.edu.cn)
 ATTN2: This package was developed by Mr.Ji Feng(fengj@lamda.nju.edu.cn). The readme file and demo roughly explains how to use the codes. For any problem concerning the codes, please feel free to contact Mr.Feng. 
 """
-from .cifar10 import CIFAR10
 from .ds_pickle import DSPickle
 from .ds_pickle2 import DSPickle2
-from .gtzan import GTZAN
-from .imdb import IMDB
 from .mnist import MNIST
-from .olivetti_face import OlivettiFace
-from .uci_adult import UCIAdult
-from .uci_letter import UCILetter
-from .uci_semg import UCISEMG
-from .uci_yeast import UCIYeast
-
 def get_ds_class(type_name):
     if type_name == 'cifar10':
         return CIFAR10
