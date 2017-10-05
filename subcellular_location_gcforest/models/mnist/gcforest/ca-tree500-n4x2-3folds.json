@@ -11,7 +11,7 @@
     "test": {"type": "mnist", "data_set": "test", "layout_x": "tensor"}
 },
 "cascade": {
-    //"data_save_dir": "/mnt/raid/fengji/gcforest/mnist/ca-tree500-n4x2-3folds/",
+    //"data_save_dir": "/home/guest_majian/python/subcellular_location_gcforest/gcforest/mnist/ca-tree500-n4x2-3folds/",
     "random_state": 0,
     "early_stopping_rounds": 4,
     "n_classes": 10,

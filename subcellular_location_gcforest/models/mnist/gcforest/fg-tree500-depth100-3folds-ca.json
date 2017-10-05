@@ -9,13 +9,13 @@
 "dataset": {
     "train": {
         "type": "ds_pickle2",
-        "data_path": "/home/guest_majian/python/gcForest_official/gcforest/mnist/fg-tree500-depth100-3folds/datas/train/outputs.pkl",
-        "X_keys": ["pool1/7x7/ets", "pool1/7x7/rf", "pool1/10x10/ets", "pool1/10x10/rf", "pool1/13x13/ets", "pool1/13x13/rf"]
+        "data_path": "/home/guest_majian/python/subcellular_location_gcforest/gcforest/mnist/fg-tree500-depth100-3folds/datas/train/outputs.pkl",
+        "X_keys": ["pool1/2x2/ets", "pool1/2x2/rf", "pool1/4x4/ets", "pool1/4x4/rf", "pool1/6x6/ets", "pool1/6x6/rf"]
     },
     "test": {
         "type": "ds_pickle2", 
-        "data_path": "/home/guest_majian/python/gcForest_official/gcforest/mnist/fg-tree500-depth100-3folds/datas/test/outputs.pkl",
-        "X_keys": ["pool1/7x7/ets", "pool1/7x7/rf", "pool1/10x10/ets", "pool1/10x10/rf", "pool1/13x13/ets", "pool1/13x13/rf"]
+        "data_path": "/home/guest_majian/python/subcellular_location_gcforest/gcforest/mnist/fg-tree500-depth100-3folds/datas/test/outputs.pkl",
+        "X_keys": ["pool1/2x2/ets", "pool1/2x2/rf", "pool1/4x4/ets", "pool1/4x4/rf", "pool1/6x6/ets", "pool1/6x6/rf"]
     }
 },
 "cascade": {
@@ -38,7 +38,7 @@
         {"n_folds":5,"type":"RandomForestClassifier","n_estimators":500,"max_depth":null,"n_jobs":-1},
         {"n_folds":5,"type":"RandomForestClassifier","n_estimators":500,"max_depth":null,"n_jobs":-1}
     ],
-    "data_save_dir": "/home/guest_majian/python/gcForest_official/gcforest/mnist/fg-tree300-depth0-3folds/cascade/data"
+    "data_save_dir": "/home/guest_majian/python/subcellular_location_gcforest/gcforest/mnist/fg-tree300-depth0-3folds/cascade/data"
 }
 }
 

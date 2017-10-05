@@ -12,7 +12,7 @@
 },
 "train":{
     "keep_model_in_mem":0,
-    //"model_cache_dir":"/home/guest_majian/python/gcForest_official/gcforest/mnist/fg-tree500-depth100-3folds/models",
+    //"model_cache_dir":"/home/guest_majian/python/subcellular_location_gcforest/gcforest/mnist/fg-tree500-depth100-3folds/models",
     "random_state":0,
     "data_cache":{
         "cache_in_disk":{
@@ -21,18 +21,18 @@
         "keep_in_mem":{
             "default":0
         },
-        "cache_dir":"/home/guest_majian/python/gcForest_official/gcforest/mnist/fg-tree500-depth100-3folds/datas"
+        "cache_dir":"/home/guest_majian/python/subcellular_location_gcforest/gcforest/mnist/fg-tree500-depth100-3folds/datas"
     }
 },
 "net":{
-"outputs": ["pool1/7x7/ets", "pool1/7x7/rf", "pool1/10x10/ets", "pool1/10x10/rf", "pool1/13x13/ets", "pool1/13x13/rf"],
+"outputs": ["pool1/2x2/ets", "pool1/2x2/rf", "pool1/4x4/ets", "pool1/4x4/rf", "pool1/6x6/ets", "pool1/6x6/rf"],
 "layers":[
-// win1/7x7
+// win1/2x2
     {
         "type":"FGWinLayer",
-        "name":"win1/7x7",
+        "name":"win1/2x2",
         "bottoms": ["X","y"],
-        "tops":["win1/7x7/ets", "win1/7x7/rf"],
+        "tops":["win1/2x2/ets", "win1/2x2/rf"],
         "n_classes": 10,
         "estimators": [
             {"n_folds":3,"type":"ExtraTreesClassifier","n_estimators":500,"max_depth":100,"n_jobs":-1,"min_samples_leaf":10},
@@ -43,12 +43,12 @@
         "win_x":2,
         "win_y":2
     },
-// win1/10x10
+// win1/4x4
     {
         "type":"FGWinLayer",
-        "name":"win1/10x10",
+        "name":"win1/4x4",
         "bottoms": ["X","y"],
-        "tops":["win1/10x10/ets", "win1/10x10/rf"],
+        "tops":["win1/4x4/ets", "win1/4x4/rf"],
         "n_classes": 10,
         "estimators": [
             {"n_folds":3,"type":"ExtraTreesClassifier","n_estimators":500,"max_depth":100,"n_jobs":-1,"min_samples_leaf":10},
@@ -59,12 +59,12 @@
         "win_x":4,
         "win_y":4
     },
-// win1/13x13
+// win1/6x6
     {
         "type":"FGWinLayer",
-        "name":"win1/13x13",
+        "name":"win1/6x6",
         "bottoms": ["X","y"],
-        "tops":["win1/13x13/ets", "win1/13x13/rf"],
+        "tops":["win1/6x6/ets", "win1/6x6/rf"],
         "n_classes": 10,
         "estimators": [
             {"n_folds":3,"type":"ExtraTreesClassifier","n_estimators":500,"max_depth":100,"n_jobs":-1,"min_samples_leaf":10},
@@ -79,8 +79,8 @@
     {
         "type":"FGPoolLayer",
         "name":"pool1",
-        "bottoms": ["win1/7x7/ets", "win1/7x7/rf", "win1/10x10/ets", "win1/10x10/rf", "win1/13x13/ets", "win1/13x13/rf"],
-        "tops": ["pool1/7x7/ets", "pool1/7x7/rf", "pool1/10x10/ets", "pool1/10x10/rf", "pool1/13x13/ets", "pool1/13x13/rf"],
+        "bottoms": ["win1/2x2/ets", "win1/2x2/rf", "win1/4x4/ets", "win1/4x4/rf", "win1/6x6/ets", "win1/6x6/rf"],
+        "tops": ["pool1/2x2/ets", "pool1/2x2/rf", "pool1/4x4/ets", "pool1/4x4/rf", "pool1/6x6/ets", "pool1/6x6/rf"],
         "pool_method": "avg",
         "win_x":2,
         "win_y":2
