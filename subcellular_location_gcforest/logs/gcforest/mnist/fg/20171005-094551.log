@@ -1,0 +1,312 @@
+[ 2017-10-05 09:45:53,566][train_fg.<module>] tools.train_fg
+[ 2017-10-05 09:45:53,567][train_fg.<module>] 
+{
+    "dataset":{
+        "test":{
+            "data_set":"test",
+            "layout_x":"tensor",
+            "type":"mnist"
+        },
+        "train":{
+            "data_set":"train",
+            "layout_x":"tensor",
+            "type":"mnist"
+        }
+    },
+    "net":{
+        "layers":[
+            {
+                "bottoms":[
+                    "X",
+                    "y"
+                ],
+                "estimators":[
+                    {
+                        "max_depth":100,
+                        "min_samples_leaf":10,
+                        "n_estimators":500,
+                        "n_folds":3,
+                        "n_jobs":-1,
+                        "type":"ExtraTreesClassifier"
+                    },
+                    {
+                        "max_depth":100,
+                        "min_samples_leaf":10,
+                        "n_estimators":500,
+                        "n_folds":3,
+                        "n_jobs":-1,
+                        "type":"RandomForestClassifier"
+                    }
+                ],
+                "n_classes":10,
+                "name":"win1/7x7",
+                "stride_x":2,
+                "stride_y":2,
+                "tops":[
+                    "win1/7x7/ets",
+                    "win1/7x7/rf"
+                ],
+                "type":"FGWinLayer",
+                "win_x":2,
+                "win_y":2
+            },
+            {
+                "bottoms":[
+                    "X",
+                    "y"
+                ],
+                "estimators":[
+                    {
+                        "max_depth":100,
+                        "min_samples_leaf":10,
+                        "n_estimators":500,
+                        "n_folds":3,
+                        "n_jobs":-1,
+                        "type":"ExtraTreesClassifier"
+                    },
+                    {
+                        "max_depth":100,
+                        "min_samples_leaf":10,
+                        "n_estimators":500,
+                        "n_folds":3,
+                        "n_jobs":-1,
+                        "type":"RandomForestClassifier"
+                    }
+                ],
+                "n_classes":10,
+                "name":"win1/10x10",
+                "stride_x":2,
+                "stride_y":2,
+                "tops":[
+                    "win1/10x10/ets",
+                    "win1/10x10/rf"
+                ],
+                "type":"FGWinLayer",
+                "win_x":4,
+                "win_y":4
+            },
+            {
+                "bottoms":[
+                    "X",
+                    "y"
+                ],
+                "estimators":[
+                    {
+                        "max_depth":100,
+                        "min_samples_leaf":10,
+                        "n_estimators":500,
+                        "n_folds":3,
+                        "n_jobs":-1,
+                        "type":"ExtraTreesClassifier"
+                    },
+                    {
+                        "max_depth":100,
+                        "min_samples_leaf":10,
+                        "n_estimators":500,
+                        "n_folds":3,
+                        "n_jobs":-1,
+                        "type":"RandomForestClassifier"
+                    }
+                ],
+                "n_classes":10,
+                "name":"win1/13x13",
+                "stride_x":2,
+                "stride_y":2,
+                "tops":[
+                    "win1/13x13/ets",
+                    "win1/13x13/rf"
+                ],
+                "type":"FGWinLayer",
+                "win_x":6,
+                "win_y":6
+            },
+            {
+                "bottoms":[
+                    "win1/7x7/ets",
+                    "win1/7x7/rf",
+                    "win1/10x10/ets",
+                    "win1/10x10/rf",
+                    "win1/13x13/ets",
+                    "win1/13x13/rf"
+                ],
+                "name":"pool1",
+                "pool_method":"avg",
+                "tops":[
+                    "pool1/7x7/ets",
+                    "pool1/7x7/rf",
+                    "pool1/10x10/ets",
+                    "pool1/10x10/rf",
+                    "pool1/13x13/ets",
+                    "pool1/13x13/rf"
+                ],
+                "type":"FGPoolLayer",
+                "win_x":2,
+                "win_y":2
+            }
+        ],
+        "outputs":[
+            "pool1/7x7/ets",
+            "pool1/7x7/rf",
+            "pool1/10x10/ets",
+            "pool1/10x10/rf",
+            "pool1/13x13/ets",
+            "pool1/13x13/rf"
+        ]
+    },
+    "train":{
+        "data_cache":{
+            "cache_dir":"/home/guest_majian/python/gcForest_official/gcforest/mnist/fg-tree500-depth100-3folds/datas",
+            "cache_in_disk":{
+                "default":1
+            },
+            "keep_in_mem":{
+                "default":0
+            }
+        },
+        "keep_model_in_mem":0,
+        "random_state":0
+    }
+}
+[ 2017-10-05 09:45:54,528][fgnet.fit_transform] X_train.shape=(11231, 1, 8, 8), y_train.shape=(11231,), X_test.shape=(2773, 1, 8, 8), y_test.shape=(2773,)
+[ 2017-10-05 09:45:54,529][fg_win_layer.fit_transform] [data][win1/7x7], bottoms=[u'X', u'y'], tops=[u'win1/7x7/ets', u'win1/7x7/rf']
+[ 2017-10-05 09:45:54,529][fg_win_layer.fit_transform] [progress][win1/7x7] ti=0/2, top_name=win1/7x7/ets
+[ 2017-10-05 09:45:54,529][base_layer.check_top_cache] [data][win1/7x7,train] top cache exists. tops[0].shape=(11231, 10, 1, 1)
+[ 2017-10-05 09:45:54,530][base_layer.check_top_cache] [data][win1/7x7,test] top cache exists. tops[0].shape=(2773, 10, 1, 1)
+[ 2017-10-05 09:45:54,530][fg_win_layer.fit_transform] [data][win1/7x7] all top cache exists. skip progress
+[ 2017-10-05 09:45:54,530][fg_win_layer.fit_transform] [progress][win1/7x7] ti=1/2, top_name=win1/7x7/rf
+[ 2017-10-05 09:45:54,531][base_layer.check_top_cache] [data][win1/7x7,train] top cache exists. tops[1].shape=(11231, 10, 1, 1)
+[ 2017-10-05 09:45:54,531][base_layer.check_top_cache] [data][win1/7x7,test] top cache exists. tops[1].shape=(2773, 10, 1, 1)
+[ 2017-10-05 09:45:54,531][fg_win_layer.fit_transform] [data][win1/7x7] all top cache exists. skip progress
+[ 2017-10-05 09:45:54,531][fg_win_layer.fit_transform] [data][win1/10x10], bottoms=[u'X', u'y'], tops=[u'win1/10x10/ets', u'win1/10x10/rf']
+[ 2017-10-05 09:45:54,532][fg_win_layer.fit_transform] [progress][win1/10x10] ti=0/2, top_name=win1/10x10/ets
+[ 2017-10-05 09:45:54,532][base_layer.check_top_cache] [data][win1/10x10,train] top cache exists. tops[0].shape=(11231, 10, 1, 1)
+[ 2017-10-05 09:45:54,533][base_layer.check_top_cache] [data][win1/10x10,test] top cache exists. tops[0].shape=(2773, 10, 1, 1)
+[ 2017-10-05 09:45:54,533][fg_win_layer.fit_transform] [data][win1/10x10] all top cache exists. skip progress
+[ 2017-10-05 09:45:54,533][fg_win_layer.fit_transform] [progress][win1/10x10] ti=1/2, top_name=win1/10x10/rf
+[ 2017-10-05 09:45:54,533][base_layer.check_top_cache] [data][win1/10x10,train] top cache exists. tops[1].shape=(11231, 10, 1, 1)
+[ 2017-10-05 09:45:54,534][base_layer.check_top_cache] [data][win1/10x10,test] top cache exists. tops[1].shape=(2773, 10, 1, 1)
+[ 2017-10-05 09:45:54,534][fg_win_layer.fit_transform] [data][win1/10x10] all top cache exists. skip progress
+[ 2017-10-05 09:45:54,534][fg_win_layer.fit_transform] [data][win1/13x13], bottoms=[u'X', u'y'], tops=[u'win1/13x13/ets', u'win1/13x13/rf']
+[ 2017-10-05 09:45:54,534][fg_win_layer.fit_transform] [progress][win1/13x13] ti=0/2, top_name=win1/13x13/ets
+[ 2017-10-05 09:45:54,534][fg_win_layer.fit_transform] [data][win1/13x13,train] bottoms.shape=11231x1x8x8,11231
+[ 2017-10-05 09:45:54,536][win_utils.get_windows] get_windows_start: X.shape=(11231, 1, 8, 8), X_win.shape=(36, 44924), nw=2, nh=2, c=1, win_x=6, win_y=6, stride_x=2, stride_y=2
+[ 2017-10-05 09:45:54,674][win_utils.get_windows] get_windows_end
+[ 2017-10-05 09:45:54,675][fg_win_layer.fit_transform] [data][win1/13x13,test] bottoms.shape=2773x1x8x8,2773
+[ 2017-10-05 09:45:54,676][win_utils.get_windows] get_windows_start: X.shape=(2773, 1, 8, 8), X_win.shape=(36, 11092), nw=2, nh=2, c=1, win_x=6, win_y=6, stride_x=2, stride_y=2
+[ 2017-10-05 09:45:54,807][win_utils.get_windows] get_windows_end
+[ 2017-10-05 09:45:54,835][base_estimator.fit] X_train.shape=(29932, 36), y_train.shape=(29932,)
+[ 2017-10-05 09:45:57,463][base_estimator.predict_proba] X.shape=(14992, 36)
+[ 2017-10-05 09:45:57,912][base_estimator.predict_proba] y_proba.shape=(14992, 10)
+[ 2017-10-05 09:45:57,913][kfold_wrapper.log_eval_metrics] Accuracy(win1/13x13/ets/3_folds.train_0.predict)=44.70%
+[ 2017-10-05 09:45:57,927][kfold_wrapper.log_eval_metrics] Accuracy(win1/13x13/ets/3_folds.train_0.vote)=46.16%
+[ 2017-10-05 09:45:57,928][kfold_wrapper.log_eval_metrics] Accuracy(win1/13x13/ets/3_folds.train_0.avg)=44.45%
+[ 2017-10-05 09:45:57,929][base_estimator.predict_proba] X.shape=(11092, 36)
+[ 2017-10-05 09:45:58,248][base_estimator.predict_proba] y_proba.shape=(11092, 10)
+[ 2017-10-05 09:45:58,277][base_estimator.fit] X_train.shape=(29944, 36), y_train.shape=(29944,)
+[ 2017-10-05 09:46:00,924][base_estimator.predict_proba] X.shape=(14980, 36)
+[ 2017-10-05 09:46:01,360][base_estimator.predict_proba] y_proba.shape=(14980, 10)
+[ 2017-10-05 09:46:01,361][kfold_wrapper.log_eval_metrics] Accuracy(win1/13x13/ets/3_folds.train_1.predict)=44.11%
+[ 2017-10-05 09:46:01,376][kfold_wrapper.log_eval_metrics] Accuracy(win1/13x13/ets/3_folds.train_1.vote)=45.77%
+[ 2017-10-05 09:46:01,377][kfold_wrapper.log_eval_metrics] Accuracy(win1/13x13/ets/3_folds.train_1.avg)=44.73%
+[ 2017-10-05 09:46:01,378][base_estimator.predict_proba] X.shape=(11092, 36)
+[ 2017-10-05 09:46:01,691][base_estimator.predict_proba] y_proba.shape=(11092, 10)
+[ 2017-10-05 09:46:01,717][base_estimator.fit] X_train.shape=(29972, 36), y_train.shape=(29972,)
+[ 2017-10-05 09:46:04,333][base_estimator.predict_proba] X.shape=(14952, 36)
+[ 2017-10-05 09:46:04,768][base_estimator.predict_proba] y_proba.shape=(14952, 10)
+[ 2017-10-05 09:46:04,768][kfold_wrapper.log_eval_metrics] Accuracy(win1/13x13/ets/3_folds.train_2.predict)=44.92%
+[ 2017-10-05 09:46:04,782][kfold_wrapper.log_eval_metrics] Accuracy(win1/13x13/ets/3_folds.train_2.vote)=46.31%
+[ 2017-10-05 09:46:04,783][kfold_wrapper.log_eval_metrics] Accuracy(win1/13x13/ets/3_folds.train_2.avg)=45.29%
+[ 2017-10-05 09:46:04,784][base_estimator.predict_proba] X.shape=(11092, 36)
+[ 2017-10-05 09:46:05,100][base_estimator.predict_proba] y_proba.shape=(11092, 10)
+[ 2017-10-05 09:46:05,102][kfold_wrapper.log_eval_metrics] Accuracy(win1/13x13/ets/3_folds.train.predict)=44.58%
+[ 2017-10-05 09:46:05,145][kfold_wrapper.log_eval_metrics] Accuracy(win1/13x13/ets/3_folds.train.vote)=46.08%
+[ 2017-10-05 09:46:05,149][kfold_wrapper.log_eval_metrics] Accuracy(win1/13x13/ets/3_folds.train.avg)=44.82%
+[ 2017-10-05 09:46:05,149][kfold_wrapper.log_eval_metrics] Accuracy(win1/13x13/ets/3_folds.test.predict)=37.02%
+[ 2017-10-05 09:46:05,160][kfold_wrapper.log_eval_metrics] Accuracy(win1/13x13/ets/3_folds.test.vote)=37.00%
+[ 2017-10-05 09:46:05,161][kfold_wrapper.log_eval_metrics] Accuracy(win1/13x13/ets/3_folds.test.avg)=35.67%
+[ 2017-10-05 09:46:05,174][fg_win_layer.fit_transform] [data][win1/13x13,train] tops[0].shape=(11231, 10, 2, 2)
+[ 2017-10-05 09:46:05,174][data_cache.update] Updating data (train->win1/13x13/ets, shape=(11231, 10, 2, 2)) in disk: /home/guest_majian/python/gcForest_official/gcforest/mnist/fg-tree500-depth100-3folds/datas/train/win1-13x13-ets.npy
+[ 2017-10-05 09:46:05,192][fg_win_layer.fit_transform] [data][win1/13x13,test] tops[0].shape=(2773, 10, 2, 2)
+[ 2017-10-05 09:46:05,192][data_cache.update] Updating data (test->win1/13x13/ets, shape=(2773, 10, 2, 2)) in disk: /home/guest_majian/python/gcForest_official/gcforest/mnist/fg-tree500-depth100-3folds/datas/test/win1-13x13-ets.npy
+[ 2017-10-05 09:46:05,198][fg_win_layer.fit_transform] [progress][win1/13x13] ti=1/2, top_name=win1/13x13/rf
+[ 2017-10-05 09:46:05,217][base_estimator.fit] X_train.shape=(29932, 36), y_train.shape=(29932,)
+[ 2017-10-05 09:46:11,217][base_estimator.predict_proba] X.shape=(14992, 36)
+[ 2017-10-05 09:46:11,658][base_estimator.predict_proba] y_proba.shape=(14992, 10)
+[ 2017-10-05 09:46:11,659][kfold_wrapper.log_eval_metrics] Accuracy(win1/13x13/rf/3_folds.train_0.predict)=50.87%
+[ 2017-10-05 09:46:11,673][kfold_wrapper.log_eval_metrics] Accuracy(win1/13x13/rf/3_folds.train_0.vote)=53.79%
+[ 2017-10-05 09:46:11,675][kfold_wrapper.log_eval_metrics] Accuracy(win1/13x13/rf/3_folds.train_0.avg)=54.24%
+[ 2017-10-05 09:46:11,676][base_estimator.predict_proba] X.shape=(11092, 36)
+[ 2017-10-05 09:46:12,003][base_estimator.predict_proba] y_proba.shape=(11092, 10)
+[ 2017-10-05 09:46:12,027][base_estimator.fit] X_train.shape=(29944, 36), y_train.shape=(29944,)
+[ 2017-10-05 09:46:18,232][base_estimator.predict_proba] X.shape=(14980, 36)
+[ 2017-10-05 09:46:18,659][base_estimator.predict_proba] y_proba.shape=(14980, 10)
+[ 2017-10-05 09:46:18,660][kfold_wrapper.log_eval_metrics] Accuracy(win1/13x13/rf/3_folds.train_1.predict)=51.41%
+[ 2017-10-05 09:46:18,674][kfold_wrapper.log_eval_metrics] Accuracy(win1/13x13/rf/3_folds.train_1.vote)=53.19%
+[ 2017-10-05 09:46:18,675][kfold_wrapper.log_eval_metrics] Accuracy(win1/13x13/rf/3_folds.train_1.avg)=54.10%
+[ 2017-10-05 09:46:18,676][base_estimator.predict_proba] X.shape=(11092, 36)
+[ 2017-10-05 09:46:19,014][base_estimator.predict_proba] y_proba.shape=(11092, 10)
+[ 2017-10-05 09:46:19,040][base_estimator.fit] X_train.shape=(29972, 36), y_train.shape=(29972,)
+[ 2017-10-05 09:46:25,274][base_estimator.predict_proba] X.shape=(14952, 36)
+[ 2017-10-05 09:46:25,705][base_estimator.predict_proba] y_proba.shape=(14952, 10)
+[ 2017-10-05 09:46:25,706][kfold_wrapper.log_eval_metrics] Accuracy(win1/13x13/rf/3_folds.train_2.predict)=50.76%
+[ 2017-10-05 09:46:25,720][kfold_wrapper.log_eval_metrics] Accuracy(win1/13x13/rf/3_folds.train_2.vote)=53.26%
+[ 2017-10-05 09:46:25,721][kfold_wrapper.log_eval_metrics] Accuracy(win1/13x13/rf/3_folds.train_2.avg)=53.26%
+[ 2017-10-05 09:46:25,722][base_estimator.predict_proba] X.shape=(11092, 36)
+[ 2017-10-05 09:46:26,155][base_estimator.predict_proba] y_proba.shape=(11092, 10)
+[ 2017-10-05 09:46:26,157][kfold_wrapper.log_eval_metrics] Accuracy(win1/13x13/rf/3_folds.train.predict)=51.02%
+[ 2017-10-05 09:46:26,220][kfold_wrapper.log_eval_metrics] Accuracy(win1/13x13/rf/3_folds.train.vote)=53.41%
+[ 2017-10-05 09:46:26,224][kfold_wrapper.log_eval_metrics] Accuracy(win1/13x13/rf/3_folds.train.avg)=53.87%
+[ 2017-10-05 09:46:26,225][kfold_wrapper.log_eval_metrics] Accuracy(win1/13x13/rf/3_folds.test.predict)=42.08%
+[ 2017-10-05 09:46:26,241][kfold_wrapper.log_eval_metrics] Accuracy(win1/13x13/rf/3_folds.test.vote)=43.82%
+[ 2017-10-05 09:46:26,242][kfold_wrapper.log_eval_metrics] Accuracy(win1/13x13/rf/3_folds.test.avg)=43.64%
+[ 2017-10-05 09:46:26,259][fg_win_layer.fit_transform] [data][win1/13x13,train] tops[1].shape=(11231, 10, 2, 2)
+[ 2017-10-05 09:46:26,259][data_cache.update] Updating data (train->win1/13x13/rf, shape=(11231, 10, 2, 2)) in disk: /home/guest_majian/python/gcForest_official/gcforest/mnist/fg-tree500-depth100-3folds/datas/train/win1-13x13-rf.npy
+[ 2017-10-05 09:46:26,278][fg_win_layer.fit_transform] [data][win1/13x13,test] tops[1].shape=(2773, 10, 2, 2)
+[ 2017-10-05 09:46:26,278][data_cache.update] Updating data (test->win1/13x13/rf, shape=(2773, 10, 2, 2)) in disk: /home/guest_majian/python/gcForest_official/gcforest/mnist/fg-tree500-depth100-3folds/datas/test/win1-13x13-rf.npy
+[ 2017-10-05 09:46:26,284][fg_pool_layer.fit_transform] [data][pool1] bottoms=[u'win1/7x7/ets', u'win1/7x7/rf', u'win1/10x10/ets', u'win1/10x10/rf', u'win1/13x13/ets', u'win1/13x13/rf'], tops=[u'pool1/7x7/ets', u'pool1/7x7/rf', u'pool1/10x10/ets', u'pool1/10x10/rf', u'pool1/13x13/ets', u'pool1/13x13/rf']
+[ 2017-10-05 09:46:26,284][fg_pool_layer._transform] [progress][0] ti=pool1/6, top_name=pool1/7x7/ets
+[ 2017-10-05 09:46:26,285][fg_pool_layer._transform] [data][pool1,train] bottoms[0].shape=(11231, 10, 1, 1)
+[ 2017-10-05 09:46:26,286][fg_pool_layer._transform] [data][pool1,train] tops[0].shape=(11231, 10, 1, 1)
+[ 2017-10-05 09:46:26,286][data_cache.update] Updating data (train->pool1/7x7/ets, shape=(11231, 10, 1, 1)) in disk: /home/guest_majian/python/gcForest_official/gcforest/mnist/fg-tree500-depth100-3folds/datas/train/pool1-7x7-ets.npy
+[ 2017-10-05 09:46:26,287][fg_pool_layer._transform] [data][pool1,test] bottoms[0].shape=(2773, 10, 1, 1)
+[ 2017-10-05 09:46:26,288][fg_pool_layer._transform] [data][pool1,test] tops[0].shape=(2773, 10, 1, 1)
+[ 2017-10-05 09:46:26,288][data_cache.update] Updating data (test->pool1/7x7/ets, shape=(2773, 10, 1, 1)) in disk: /home/guest_majian/python/gcForest_official/gcforest/mnist/fg-tree500-depth100-3folds/datas/test/pool1-7x7-ets.npy
+[ 2017-10-05 09:46:26,289][fg_pool_layer._transform] [progress][1] ti=pool1/6, top_name=pool1/7x7/rf
+[ 2017-10-05 09:46:26,289][fg_pool_layer._transform] [data][pool1,train] bottoms[1].shape=(11231, 10, 1, 1)
+[ 2017-10-05 09:46:26,291][fg_pool_layer._transform] [data][pool1,train] tops[1].shape=(11231, 10, 1, 1)
+[ 2017-10-05 09:46:26,291][data_cache.update] Updating data (train->pool1/7x7/rf, shape=(11231, 10, 1, 1)) in disk: /home/guest_majian/python/gcForest_official/gcforest/mnist/fg-tree500-depth100-3folds/datas/train/pool1-7x7-rf.npy
+[ 2017-10-05 09:46:26,292][fg_pool_layer._transform] [data][pool1,test] bottoms[1].shape=(2773, 10, 1, 1)
+[ 2017-10-05 09:46:26,292][fg_pool_layer._transform] [data][pool1,test] tops[1].shape=(2773, 10, 1, 1)
+[ 2017-10-05 09:46:26,293][data_cache.update] Updating data (test->pool1/7x7/rf, shape=(2773, 10, 1, 1)) in disk: /home/guest_majian/python/gcForest_official/gcforest/mnist/fg-tree500-depth100-3folds/datas/test/pool1-7x7-rf.npy
+[ 2017-10-05 09:46:26,293][fg_pool_layer._transform] [progress][2] ti=pool1/6, top_name=pool1/10x10/ets
+[ 2017-10-05 09:46:26,294][fg_pool_layer._transform] [data][pool1,train] bottoms[2].shape=(11231, 10, 1, 1)
+[ 2017-10-05 09:46:26,295][fg_pool_layer._transform] [data][pool1,train] tops[2].shape=(11231, 10, 1, 1)
+[ 2017-10-05 09:46:26,295][data_cache.update] Updating data (train->pool1/10x10/ets, shape=(11231, 10, 1, 1)) in disk: /home/guest_majian/python/gcForest_official/gcforest/mnist/fg-tree500-depth100-3folds/datas/train/pool1-10x10-ets.npy
+[ 2017-10-05 09:46:26,296][fg_pool_layer._transform] [data][pool1,test] bottoms[2].shape=(2773, 10, 1, 1)
+[ 2017-10-05 09:46:26,297][fg_pool_layer._transform] [data][pool1,test] tops[2].shape=(2773, 10, 1, 1)
+[ 2017-10-05 09:46:26,297][data_cache.update] Updating data (test->pool1/10x10/ets, shape=(2773, 10, 1, 1)) in disk: /home/guest_majian/python/gcForest_official/gcforest/mnist/fg-tree500-depth100-3folds/datas/test/pool1-10x10-ets.npy
+[ 2017-10-05 09:46:26,297][fg_pool_layer._transform] [progress][3] ti=pool1/6, top_name=pool1/10x10/rf
+[ 2017-10-05 09:46:26,298][fg_pool_layer._transform] [data][pool1,train] bottoms[3].shape=(11231, 10, 1, 1)
+[ 2017-10-05 09:46:26,299][fg_pool_layer._transform] [data][pool1,train] tops[3].shape=(11231, 10, 1, 1)
+[ 2017-10-05 09:46:26,299][data_cache.update] Updating data (train->pool1/10x10/rf, shape=(11231, 10, 1, 1)) in disk: /home/guest_majian/python/gcForest_official/gcforest/mnist/fg-tree500-depth100-3folds/datas/train/pool1-10x10-rf.npy
+[ 2017-10-05 09:46:26,300][fg_pool_layer._transform] [data][pool1,test] bottoms[3].shape=(2773, 10, 1, 1)
+[ 2017-10-05 09:46:26,301][fg_pool_layer._transform] [data][pool1,test] tops[3].shape=(2773, 10, 1, 1)
+[ 2017-10-05 09:46:26,301][data_cache.update] Updating data (test->pool1/10x10/rf, shape=(2773, 10, 1, 1)) in disk: /home/guest_majian/python/gcForest_official/gcforest/mnist/fg-tree500-depth100-3folds/datas/test/pool1-10x10-rf.npy
+[ 2017-10-05 09:46:26,302][fg_pool_layer._transform] [progress][4] ti=pool1/6, top_name=pool1/13x13/ets
+[ 2017-10-05 09:46:26,303][fg_pool_layer._transform] [data][pool1,train] bottoms[4].shape=(11231, 10, 2, 2)
+[ 2017-10-05 09:46:26,306][fg_pool_layer._transform] [data][pool1,train] tops[4].shape=(11231, 10, 1, 1)
+[ 2017-10-05 09:46:26,306][data_cache.update] Updating data (train->pool1/13x13/ets, shape=(11231, 10, 1, 1)) in disk: /home/guest_majian/python/gcForest_official/gcforest/mnist/fg-tree500-depth100-3folds/datas/train/pool1-13x13-ets.npy
+[ 2017-10-05 09:46:26,308][fg_pool_layer._transform] [data][pool1,test] bottoms[4].shape=(2773, 10, 2, 2)
+[ 2017-10-05 09:46:26,309][fg_pool_layer._transform] [data][pool1,test] tops[4].shape=(2773, 10, 1, 1)
+[ 2017-10-05 09:46:26,309][data_cache.update] Updating data (test->pool1/13x13/ets, shape=(2773, 10, 1, 1)) in disk: /home/guest_majian/python/gcForest_official/gcforest/mnist/fg-tree500-depth100-3folds/datas/test/pool1-13x13-ets.npy
+[ 2017-10-05 09:46:26,310][fg_pool_layer._transform] [progress][5] ti=pool1/6, top_name=pool1/13x13/rf
+[ 2017-10-05 09:46:26,311][fg_pool_layer._transform] [data][pool1,train] bottoms[5].shape=(11231, 10, 2, 2)
+[ 2017-10-05 09:46:26,314][fg_pool_layer._transform] [data][pool1,train] tops[5].shape=(11231, 10, 1, 1)
+[ 2017-10-05 09:46:26,314][data_cache.update] Updating data (train->pool1/13x13/rf, shape=(11231, 10, 1, 1)) in disk: /home/guest_majian/python/gcForest_official/gcforest/mnist/fg-tree500-depth100-3folds/datas/train/pool1-13x13-rf.npy
+[ 2017-10-05 09:46:26,315][fg_pool_layer._transform] [data][pool1,test] bottoms[5].shape=(2773, 10, 2, 2)
+[ 2017-10-05 09:46:26,317][fg_pool_layer._transform] [data][pool1,test] tops[5].shape=(2773, 10, 1, 1)
+[ 2017-10-05 09:46:26,317][data_cache.update] Updating data (test->pool1/13x13/rf, shape=(2773, 10, 1, 1)) in disk: /home/guest_majian/python/gcForest_official/gcforest/mnist/fg-tree500-depth100-3folds/datas/test/pool1-13x13-rf.npy
+[ 2017-10-05 09:46:26,320][fgnet.save_outputs] outputs.shape=,pool1/7x7/ets->(11231, 10, 1, 1),pool1/7x7/rf->(11231, 10, 1, 1),pool1/10x10/ets->(11231, 10, 1, 1),pool1/10x10/rf->(11231, 10, 1, 1),pool1/13x13/ets->(11231, 10, 1, 1),pool1/13x13/rf->(11231, 10, 1, 1),y->(11231,)
+[ 2017-10-05 09:46:26,321][fgnet.save_outputs] Saving Outputs in /home/guest_majian/python/gcForest_official/gcforest/mnist/fg-tree500-depth100-3folds/datas/train/outputs.pkl 
+[ 2017-10-05 09:46:26,326][fgnet.save_outputs] outputs.shape=,pool1/7x7/ets->(2773, 10, 1, 1),pool1/7x7/rf->(2773, 10, 1, 1),pool1/10x10/ets->(2773, 10, 1, 1),pool1/10x10/rf->(2773, 10, 1, 1),pool1/13x13/ets->(2773, 10, 1, 1),pool1/13x13/rf->(2773, 10, 1, 1),y->(2773,)
+[ 2017-10-05 09:46:26,326][fgnet.save_outputs] Saving Outputs in /home/guest_majian/python/gcForest_official/gcforest/mnist/fg-tree500-depth100-3folds/datas/test/outputs.pkl 

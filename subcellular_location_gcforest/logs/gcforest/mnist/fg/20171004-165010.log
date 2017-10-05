@@ -1,0 +1,182 @@
+[ 2017-10-04 16:50:12,983][train_fg.<module>] tools.train_fg
+[ 2017-10-04 16:50:12,984][train_fg.<module>] 
+{
+    "dataset":{
+        "test":{
+            "data_set":"test",
+            "layout_x":"tensor",
+            "type":"mnist"
+        },
+        "train":{
+            "data_set":"train",
+            "layout_x":"tensor",
+            "type":"mnist"
+        }
+    },
+    "net":{
+        "layers":[
+            {
+                "bottoms":[
+                    "X",
+                    "y"
+                ],
+                "estimators":[
+                    {
+                        "max_depth":100,
+                        "min_samples_leaf":10,
+                        "n_estimators":500,
+                        "n_folds":3,
+                        "n_jobs":-1,
+                        "type":"ExtraTreesClassifier"
+                    },
+                    {
+                        "max_depth":100,
+                        "min_samples_leaf":10,
+                        "n_estimators":500,
+                        "n_folds":3,
+                        "n_jobs":-1,
+                        "type":"RandomForestClassifier"
+                    }
+                ],
+                "n_classes":10,
+                "name":"win1/7x7",
+                "stride_x":2,
+                "stride_y":2,
+                "tops":[
+                    "win1/7x7/ets",
+                    "win1/7x7/rf"
+                ],
+                "type":"FGWinLayer",
+                "win_x":7,
+                "win_y":7
+            },
+            {
+                "bottoms":[
+                    "X",
+                    "y"
+                ],
+                "estimators":[
+                    {
+                        "max_depth":100,
+                        "min_samples_leaf":10,
+                        "n_estimators":500,
+                        "n_folds":3,
+                        "n_jobs":-1,
+                        "type":"ExtraTreesClassifier"
+                    },
+                    {
+                        "max_depth":100,
+                        "min_samples_leaf":10,
+                        "n_estimators":500,
+                        "n_folds":3,
+                        "n_jobs":-1,
+                        "type":"RandomForestClassifier"
+                    }
+                ],
+                "n_classes":10,
+                "name":"win1/10x10",
+                "stride_x":2,
+                "stride_y":2,
+                "tops":[
+                    "win1/10x10/ets",
+                    "win1/10x10/rf"
+                ],
+                "type":"FGWinLayer",
+                "win_x":10,
+                "win_y":10
+            },
+            {
+                "bottoms":[
+                    "X",
+                    "y"
+                ],
+                "estimators":[
+                    {
+                        "max_depth":100,
+                        "min_samples_leaf":10,
+                        "n_estimators":500,
+                        "n_folds":3,
+                        "n_jobs":-1,
+                        "type":"ExtraTreesClassifier"
+                    },
+                    {
+                        "max_depth":100,
+                        "min_samples_leaf":10,
+                        "n_estimators":500,
+                        "n_folds":3,
+                        "n_jobs":-1,
+                        "type":"RandomForestClassifier"
+                    }
+                ],
+                "n_classes":10,
+                "name":"win1/13x13",
+                "stride_x":2,
+                "stride_y":2,
+                "tops":[
+                    "win1/13x13/ets",
+                    "win1/13x13/rf"
+                ],
+                "type":"FGWinLayer",
+                "win_x":13,
+                "win_y":13
+            },
+            {
+                "bottoms":[
+                    "win1/7x7/ets",
+                    "win1/7x7/rf",
+                    "win1/10x10/ets",
+                    "win1/10x10/rf",
+                    "win1/13x13/ets",
+                    "win1/13x13/rf"
+                ],
+                "name":"pool1",
+                "pool_method":"avg",
+                "tops":[
+                    "pool1/7x7/ets",
+                    "pool1/7x7/rf",
+                    "pool1/10x10/ets",
+                    "pool1/10x10/rf",
+                    "pool1/13x13/ets",
+                    "pool1/13x13/rf"
+                ],
+                "type":"FGPoolLayer",
+                "win_x":2,
+                "win_y":2
+            }
+        ],
+        "outputs":[
+            "pool1/7x7/ets",
+            "pool1/7x7/rf",
+            "pool1/10x10/ets",
+            "pool1/10x10/rf",
+            "pool1/13x13/ets",
+            "pool1/13x13/rf"
+        ]
+    },
+    "train":{
+        "data_cache":{
+            "cache_dir":"/home/guest_majian/python/gcForest_official/gcforest/mnist/fg-tree500-depth100-3folds/datas",
+            "cache_in_disk":{
+                "default":1
+            },
+            "keep_in_mem":{
+                "default":0
+            }
+        },
+        "keep_model_in_mem":0,
+        "random_state":0
+    }
+}
+[ 2017-10-04 16:50:13,943][fgnet.fit_transform] X_train.shape=(11231, 1, 8, 8), y_train.shape=(11231,), X_test.shape=(2773, 1, 8, 8), y_test.shape=(2773,)
+[ 2017-10-04 16:50:13,943][fg_win_layer.fit_transform] [data][win1/7x7], bottoms=[u'X', u'y'], tops=[u'win1/7x7/ets', u'win1/7x7/rf']
+[ 2017-10-04 16:50:13,944][fg_win_layer.fit_transform] [progress][win1/7x7] ti=0/2, top_name=win1/7x7/ets
+[ 2017-10-04 16:50:13,944][base_layer.check_top_cache] [data][win1/7x7,train] top cache exists. tops[0].shape=(11231, 10, 1, 1)
+[ 2017-10-04 16:50:13,945][base_layer.check_top_cache] [data][win1/7x7,test] top cache exists. tops[0].shape=(2773, 10, 1, 1)
+[ 2017-10-04 16:50:13,945][fg_win_layer.fit_transform] [data][win1/7x7] all top cache exists. skip progress
+[ 2017-10-04 16:50:13,945][fg_win_layer.fit_transform] [progress][win1/7x7] ti=1/2, top_name=win1/7x7/rf
+[ 2017-10-04 16:50:13,946][base_layer.check_top_cache] [data][win1/7x7,train] top cache exists. tops[1].shape=(11231, 10, 1, 1)
+[ 2017-10-04 16:50:13,946][base_layer.check_top_cache] [data][win1/7x7,test] top cache exists. tops[1].shape=(2773, 10, 1, 1)
+[ 2017-10-04 16:50:13,946][fg_win_layer.fit_transform] [data][win1/7x7] all top cache exists. skip progress
+[ 2017-10-04 16:50:13,946][fg_win_layer.fit_transform] [data][win1/10x10], bottoms=[u'X', u'y'], tops=[u'win1/10x10/ets', u'win1/10x10/rf']
+[ 2017-10-04 16:50:13,946][fg_win_layer.fit_transform] [progress][win1/10x10] ti=0/2, top_name=win1/10x10/ets
+[ 2017-10-04 16:50:13,947][fg_win_layer.fit_transform] [data][win1/10x10,train] bottoms.shape=11231x1x8x8,11231
